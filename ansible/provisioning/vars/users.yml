@@ -1,0 +1,31 @@
+# Documentation: https://roots.io/trellis/docs/ssh-keys/
+sshd_permit_root_login: false
+sshd_password_authentication: false
+
+web_user: web
+web_group: www-data
+
+# adminuser is just an example of a user name for an admin, it can be changed to your convinience and would be a available on the system as a sudoer.
+admin_user: adminuser
+
+# Documentation: https://roots.io/trellis/docs/security/
+sudoer_passwords:
+  adminuser: #SUPER LONG SECURE PASSWORD#
+
+# Also define 'vault_sudoer_passwords' (`group_vars/staging/vault.yml`, `group_vars/production/vault.yml`)
+users:
+  - name: "{{ web_user }}"
+    groups:
+      - "{{ web_group }}"
+    keys:
+# You can use your github ssh keys easly, like this one:
+#      - https://github.com/umbertix.keys
+  - name: "{{ admin_user }}"
+    groups:
+      - sudo
+    keys:
+# You can use your github ssh keys easly, like this one:
+#      - https://github.com/umbertix.keys
+
+web_sudoers:
+  - "/usr/sbin/service php7.0-fpm *"

@@ -1,0 +1,7 @@
+---
+cron_tasks:
+      - name: schedule laravel
+        cron_file: laravel
+        user: root
+        minute: 1
+        job: "php {{ www_root }}/{{ project_name }}/current/artisan schedule:run >> /dev/null 2>&1"

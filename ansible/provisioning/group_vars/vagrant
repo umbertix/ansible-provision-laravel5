@@ -1,0 +1,8 @@
+---
+
+mysql_databases:
+  - name: homestead
+
+mysql_users:
+  - name: homestead
+    pass: secret

@@ -1,0 +1,7 @@
+---
+project_name: #YOU NEED A PROJECT NAME HERE#
+mysql_users:
+  - name: #YOU NEED A DB_USER NAME HERE#
+    host: "%"
+    password: #LONG AND SECURE PASSWORD#
+    priv: "#USE THE NAME OF THE DB THAT YOU SPECIFIED IN MYSQL.YML#.*:ALL"

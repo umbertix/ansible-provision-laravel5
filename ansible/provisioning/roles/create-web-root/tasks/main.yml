@@ -1,0 +1,8 @@
+---
+- name: Create web root
+  file:
+    path: "{{ www_root }}"
+    owner: "{{ web_user }}"
+    group: "{{ web_group }}"
+    mode: 0755
+    state: directory

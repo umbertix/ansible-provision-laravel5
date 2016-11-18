@@ -1,0 +1,7 @@
+---
+
+# Databases.
+mysql_databases:
+    - name: #Change this for your desired database name
+      collation: utf8_general_ci
+      encoding: utf8

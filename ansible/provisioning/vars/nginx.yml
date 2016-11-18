@@ -1,0 +1,25 @@
+---
+nginx_remove_default_vhost: true
+nginx_vhosts:
+ - listen: "80 default_server"
+   root: "{{ www_root }}/{{ project_name }}/current/public"
+   index: "index.php index.html index.htm"
+   extra_parameters: |
+            location / {
+                    try_files $uri $uri/ /index.php?$is_args$args;
+            }
+            location ~ \.php$ {
+                    include snippets/fastcgi-php.conf;
+            	    fastcgi_pass 127.0.0.1:9000;
+                    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                    include fastcgi_params;
+                    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            }
+            client_max_body_size 100M;
+            sendfile off;
+            location ~ /\.ht {
+                deny all;
+            }
+            location ~ /.well-known {
+                allow all;
+            }

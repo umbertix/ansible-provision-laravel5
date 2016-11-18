@@ -1,0 +1,13 @@
+---
+supervisor_programs_present:
+  laravel-worker:
+    command: 'php {{ www_root }}/{{ project_name }}/current/artisan queue:work --daemon --tries=3'
+    autostart: true
+    autorestart: true
+    startretries: 3
+    stdout_logfile: "/var/log/supervisor/laravel-worker.out"
+    stdout_logfile_maxbytes: 0
+    stderr_logfile: "/var/log/supervisor/laravel-worker.log"
+    stderr_logfile_maxbytes: 0
+    numprocs: 8
+    process_name: "%(program_name)s_%(process_num)02d"
